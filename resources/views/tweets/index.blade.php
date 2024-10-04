@@ -14,10 +14,54 @@
           @foreach ($tweets as $tweet)
           <div class="mb-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
             <p class="text-gray-800 dark:text-gray-300">{{ $tweet->tweet }}</p>
+            <a href="{{ route('profile.show', $tweet->user) }}">
+              <p class="text-gray-600 dark:text-gray-400 text-sm">投稿者: {{ $tweet->user->name }}</p>
+            </a>
+            <a href="{{ route('tweets.show', $tweet) }}" class="text-blue-500 hover:text-blue-700">詳細を見る</a>
+
             <p class="text-gray-600 dark:text-gray-400 text-sm">投稿者: {{ $tweet->user->name }}</p>
             <a href="{{ route('tweets.show', $tweet) }}" class="text-blue-500 hover:text-blue-700">詳細を見る</a>
-          </div>
+            <div class="flex">
+              @if ($tweet->liked->contains(auth()->id()))
+              <form action="{{ route('tweets.dislike', $tweet) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="text-red-500 hover:text-red-700">いいねをやめる {{$tweet->liked->count()}}</button>
+              </form>
+              @else
+              <form action="{{ route('tweets.like', $tweet) }}" method="POST">
+                @csrf
+                <button type="submit" class="text-blue-500 hover:text-blue-700">いいね {{$tweet->liked->count()}}</button>
+              </form>
+              @endif
+            </div>
+            
+            <div class="flex">
+              @if(auth()->user()->retweets->contains($tweet->id))
+                  <!-- リツイート済みの場合は取り消しボタン -->
+                <form action="{{ route('tweets.unretweet', $tweet) }}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="text-red-500 hover:text-red-700">リツイートをやめる</button>
+                  <!--<a href=style.css class="button09">リツイートをやめる</a>-->
+                  <!--<button type="button" name="button" class="text-blue-500 hover:text-blue-700">リツイートをやめる</button>-->
+                </form>
+              @else
+                  <!-- リツイートボタン -->
+                <form action="{{ route('tweets.retweet', $tweet) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="text-blue-500 hover:text-blue-700">リツイート</button>
+                    <!--<a href=style.css class="button09">リツイート</a>-->
+                    <!--<button type="button" name="button" class="text-blue-500 hover:text-blue-700">リツイート</button>-->
+                </form>
+              @endif
+            </div>
+            
+
+
+            </div>
           @endforeach
+          
         </div>
       </div>
     </div>
