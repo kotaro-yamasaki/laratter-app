@@ -33,12 +33,12 @@
             <form action="{{ route('tweets.dislike', $tweet) }}" method="POST">
               @csrf
               @method('DELETE')
-              <button type="submit" class="text-red-500 hover:text-red-700">いいねをやめる {{$tweet->liked->count()}}</button>
+              <button type="submit" class="text-red-500 hover:text-red-700">dislike {{$tweet->liked->count()}}</button>
             </form>
             @else
             <form action="{{ route('tweets.like', $tweet) }}" method="POST">
               @csrf
-              <button type="submit" class="text-blue-500 hover:text-blue-700">いいね {{$tweet->liked->count()}}</button>
+              <button type="submit" class="text-blue-500 hover:text-blue-700">like {{$tweet->liked->count()}}</button>
             </form>
             @endif
           </div>
@@ -48,7 +48,7 @@
                 <form action="{{ route('tweets.unretweet', $tweet) }}" method="POST">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="text-red-500 hover:text-red-700">リツイートをやめる</button>
+                  <button type="submit" class="text-red-500 hover:text-red-700">unretweet</button>
                   <!--<a href=style.css class="button09">リツイートをやめる</a>-->
                   <!--<button type="button" name="button" class="text-blue-500 hover:text-blue-700">リツイートをやめる</button>-->
                 </form>
@@ -56,7 +56,7 @@
                   <!-- リツイートボタン -->
                 <form action="{{ route('tweets.retweet', $tweet) }}" method="POST">
                     @csrf
-                    <button type="submit" class="text-blue-500 hover:text-blue-700">リツイート</button>
+                    <button type="submit" class="text-blue-500 hover:text-blue-700">retweet</button>
                     <!--<a href=style.css class="button09">リツイート</a>-->
                     <!--<button type="button" name="button" class="text-blue-500 hover:text-blue-700">リツイート</button>-->
                 </form>
