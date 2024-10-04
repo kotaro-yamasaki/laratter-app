@@ -124,40 +124,6 @@ public function search(Request $request)
   return view('tweets.search', compact('tweets'));
 }
 
-/*public function retweet(Tweet $tweet)
-{
-    // すでにリツイートされているか確認
-    $existingRetweet = Tweet::where('user_id', auth()->id())
-                            ->where('original_tweet_id', $tweet->id)
-                            ->first();
-
-    if ($existingRetweet) {
-        return back()->with('error', 'すでにリツイートしています。');
-    }
-
-    // リツイートを作成
-    Tweet::create([
-        'user_id' => auth()->id(), // 現在ログイン中のユーザー
-        'content' => $tweet->content, // 元のツイートの内容をコピー
-        'original_tweet_id' => $tweet->id, // 元のツイートID
-    ]);
-
-    return back()->with('success', 'リツイートしました。');
-}
-public function unretweet(Tweet $tweet)
-{
-    // ログインユーザーのリツイートを検索して削除
-    $retweet = Tweet::where('user_id', auth()->id())
-                    ->where('original_tweet_id', $tweet->id)
-                    ->first();
-
-    if ($retweet) {
-        $retweet->delete();
-        return back()->with('success', 'リツイートを解除しました。');
-    }
-
-    return back()->with('error', 'リツイートが見つかりません。');
-} */
 
 
 }

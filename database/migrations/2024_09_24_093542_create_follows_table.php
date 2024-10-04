@@ -28,8 +28,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('follows');
-            $table->dropForeign(['original_tweet_id']);
-            $table->dropColumn('original_tweet_id');
+            //$table->dropForeign(['original_tweet_id']);
+            //$table->dropColumn('original_tweet_id');
 
        
     }
