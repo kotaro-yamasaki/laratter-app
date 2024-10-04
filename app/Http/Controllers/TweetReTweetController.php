@@ -97,16 +97,17 @@ class TweetReTweetController extends Controller
         $user = auth()->user();
 
         // リツイートが存在する場合に削除
-        if ($tweet->retweetedBy($user)) {
+        /*if ($tweet->retweetedBy($user)) {
             $user->retweets()->detach($tweet->id);
         
             $retweet = $user->tweets()->where('original_tweet_id', $tweet->id)->first();
             if ($retweet) {
                 $retweet->delete();
             }
-        }
-
+        }*/
+        //$tweet->retweetedBy()->detach(auth()->id());
         return back();
+
 
     }
 

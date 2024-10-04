@@ -42,7 +42,9 @@
                 <form action="{{ route('tweets.unretweet', $tweet) }}" method="POST">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="text-red-500 hover:text-red-700">リツイートをやめる</button>
+                  <!--<label for="tweet" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Tweet</label>-->
+                  <!--<input type="text" name="tweet" id="tweet" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline">-->
+                  <button type="submit" class="text-red-500 hover:text-red-700">当たり</button>
                   <!--<a href=style.css class="button09">リツイートをやめる</a>-->
                   <!--<button type="button" name="button" class="text-blue-500 hover:text-blue-700">リツイートをやめる</button>-->
                 </form>
@@ -50,7 +52,8 @@
                   <!-- リツイートボタン -->
                 <form action="{{ route('tweets.retweet', $tweet) }}" method="POST">
                     @csrf
-                    <button type="submit" class="text-blue-500 hover:text-blue-700">リツイート</button>
+                    <button type="submit" class="text-blue-500 hover:text-blue-700">引用</button>
+                    <input type="text" name="tweet" id="tweet" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                     <!--<a href=style.css class="button09">リツイート</a>-->
                     <!--<button type="button" name="button" class="text-blue-500 hover:text-blue-700">リツイート</button>-->
                 </form>
